@@ -1,0 +1,292 @@
+{
+  "Graves": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/graves/hud/graves_square.png",
+    "cost": 1,
+    "traits": ["Academy", "Twinshot"]
+  },
+  "Katarina": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/katarina/hud/katarina_square.png",
+    "cost": 2,
+    "traits": ["Academy", "Assassin"]
+  },
+  "Leona": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/leona/hud/leona_square.png",
+    "cost": 3,
+    "traits": ["Academy", "Bodyguard"]
+  },
+  "Lux": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/lux/hud/lux_square_0.png",
+    "cost": 4,
+    "traits": ["Academy", "Arcanist"]
+  },
+  "Yone": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/yone/hud/yone_square.yone.png",
+    "cost": 4,
+    "traits": ["Academy", "Challenger"]
+  },
+  "Yuumi": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/yuumi/hud/yuumi_square.png",
+    "cost": 5,
+    "traits": ["Cuddly", "Academy", "Scholar"]
+  },
+  "Singed": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/singed/hud/singed_square_0.png",
+    "cost": 1,
+    "traits": ["Chemtech", "Innovator"]
+  },
+  "Twitch": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/twitch/hud/twitch_square.png",
+    "cost": 1,
+    "traits": ["Chemtech", "Assassin"]
+  },
+  "Lissandra": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/lissandra/hud/lissandra_square.png",
+    "cost": 3,
+    "traits": ["Chemtech", "Scholar"]
+  },
+  "Warwick": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/warwick/hud/warwick_square_0.png",
+    "cost": 2,
+    "traits": ["Chemtech", "Challenger"]
+  },
+  "Zac": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/zac/hud/zac_square.png",
+    "cost": 3,
+    "traits": ["Chemtech", "Bruiser"]
+  },
+  "Dr. Mundo": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/drmundo/hud/drmundo_square_0.dr_mundo_vgu.png",
+    "cost": 4,
+    "traits": ["Chemtech", "Mutant", "Bruiser"]
+  },
+  "Viktor": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/viktor/hud/viktor_square.png",
+    "cost": 5,
+    "traits": ["Chemtech", "Arcanist"]
+  },
+  "Camille": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/camille/hud/camille_square.png",
+    "cost": 1,
+    "traits": ["Clockwork", "Challenger"]
+  },
+  "Zilean": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/zilean/hud/chronokeeper_square.png",
+    "cost": 2,
+    "traits": ["Clockwork", "Innovator"]
+  },
+  "Orianna": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/orianna/hud/oriana_square.png",
+    "cost": 4,
+    "traits": ["Clockwork", "Enchanter"]
+  },
+  "Jhin": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/jhin/hud/jhin_square_0.png",
+    "cost": 4,
+    "traits": ["Clockwork", "Sniper"]
+  },
+  "Miss Fortune": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/missfortune/hud/missfortune_square_0.png",
+    "cost": 3,
+    "traits": ["Mercenary", "Sniper"]
+  },
+  "Illaoi": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/illaoi/hud/illaoi_square.png",
+    "cost": 1,
+    "traits": ["Mercenary", "Bruiser"]
+  },
+  "Twisted Fate": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/twistedfate/hud/twistedfate_square_0.png",
+    "cost": 1,
+    "traits": ["Syndicate", "Arcanist"]
+  },
+  "Gangplank": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/gangplank/hud/gangplank_square.png",
+    "cost": 3,
+    "traits": ["Mercenary", "Twinshot"]
+  },
+  "Tahm Kench": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/tahmkench/hud/tahmkench_square.png",
+    "cost": 4,
+    "traits": ["Mercenary", "Bruiser", "Glutton"]
+  },
+  "Seraphine": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/seraphine/hud/seraphine_square.ellipsismage.png",
+    "cost": 4,
+    "traits": ["Socialite", "Innovator"]
+  },
+  "Zyra": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/zyra/hud/zyra_square_0.png",
+    "cost": 2,
+    "traits": ["Syndicate", "Scholar"]
+  },
+  "Darius": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/darius/hud/darius_square_0.png",
+    "cost": 1,
+    "traits": ["Syndicate", "Bodyguard"]
+  },
+  "Swain": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/swain/hud/swain_square_0.png",
+    "cost": 2,
+    "traits": ["Imperial", "Arcanist"]
+  },
+  "Samira": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/samira/hud/samira_square.samira.png",
+    "cost": 3,
+    "traits": ["Imperial", "Challenger"]
+  },
+  "Vi": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/vi/hud/vi_square.png",
+    "cost": 2,
+    "traits": ["Enforcer", "Sister", "Bruiser"]
+  },
+  "Caitlyn": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/caitlyn/hud/caitlyn_square.png",
+    "cost": 1,
+    "traits": ["Enforcer", "Sniper"]
+  },
+  "Jayce": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/jayce/hud/jayce_square.png",
+    "cost": 5,
+    "traits": ["Enforcer", "Innovator", "Transformer"]
+  },
+  "Malzahar": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/malzahar/hud/malzahar_square.png",
+    "cost": 3,
+    "traits": ["Mutant", "Arcanist"]
+  },
+  "Kog'Maw": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/kogmaw/hud/kogmaw_square_0.png",
+    "cost": 2,
+    "traits": ["Mutant", "Sniper", "Twinshot"]
+  },
+  "Cho'Gath": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/chogath/hud/greenterror_square.png",
+    "cost": 3,
+    "traits": ["Mutant", "Bruiser", "Colossus"]
+  },
+  "Sion": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/sion/hud/sion_square.png",
+    "cost": 4,
+    "traits": ["Imperial", "Protector", "Colossus"]
+  },
+  "Garen": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/garen/hud/garen_square.png",
+    "cost": 1,
+    "traits": ["Academy", "Protector"]
+  },
+  "Galio": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/galio/hud/galio_square.png",
+    "cost": 5,
+    "traits": ["Socialite", "Bodyguard", "Colossus"]
+  },
+  "Ezreal": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/ezreal/hud/ezreal_square_0.png",
+    "cost": 1,
+    "traits": ["Scrap", "Innovator"]
+  },
+  "Blitzcrank": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/blitzcrank/hud/steamgolem_square.png",
+    "cost": 2,
+    "traits": ["Scrap", "Protector", "Bodyguard"]
+  },
+  "Trundle": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/trundle/hud/trundle_square.png",
+    "cost": 2,
+    "traits": ["Scrap", "Bruiser"]
+  },
+  "Ekko": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/ekko/hud/ekko_square.png",
+    "cost": 3,
+    "traits": ["Scrap", "Assassin"]
+  },
+  "Ziggs": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/ziggs/hud/ziggs_square.png",
+    "cost": 1,
+    "traits": ["Scrap", "Yordle", "Arcanist"]
+  },
+  "Jinx": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/jinx/hud/jinx_square.png",
+    "cost": 5,
+    "traits": ["Scrap", "Sister", "Twinshot"]
+  },
+  "Fiora": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/fiora/hud/fiora_square.png",
+    "cost": 4,
+    "traits": ["Enforcer", "Challenger"]
+  },
+  "Poppy": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/poppy/hud/poppy_square.png",
+    "cost": 1,
+    "traits": ["Yordle", "Bodyguard"]
+  },
+  "Lulu": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/lulu/hud/lulu_square_0.png",
+    "cost": 2,
+    "traits": ["Yordle", "Enchanter"]
+  },
+  "Vex": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/vex/hud/vex_square_0.s_yordle.png",
+    "cost": 3,
+    "traits": ["Yordle", "Arcanist"]
+  },
+  "Heimerdinger": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/heimerdinger/hud/heimerdinger_square.png",
+    "cost": 3,
+    "traits": ["Yordle", "Innovator", "Scholar"]
+  },
+  "Tristana": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/tristana/hud/tristana_square.png",
+    "cost": 2,
+    "traits": ["Yordle", "Sniper"]
+  },
+  "Janna": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/janna/hud/janna_square.png",
+    "cost": 4,
+    "traits": ["Scrap", "Enchanter", "Scholar"]
+  },
+  "Kassadin": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/kassadin/hud/kassadin_square_0.png",
+    "cost": 1,
+    "traits": ["Mutant", "Protector"]
+  },
+  "Urgot": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/urgot/hud/urgot_square.png",
+    "cost": 4,
+    "traits": ["Chemtech", "Twinshot"]
+  },
+  "Quinn": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/quinn/hud/quinn_square.png",
+    "cost": 2,
+    "traits": ["Mercenary", "Challenger"]
+  },
+  "Taric": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/taric/hud/taric_square.png",
+    "cost": 3,
+    "traits": ["Socialite", "Enchanter"]
+  },
+  "Talon": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/talon/hud/talon_square_0.png",
+    "cost": 2,
+    "traits": ["Imperial", "Assassin"]
+  },
+  "Kai'Sa": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/kaisa/hud/kaisa_square.png",
+    "cost": 5,
+    "traits": ["Mutant", "Challenger"]
+  },
+  "Braum": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/braum/hud/braum_square.png",
+    "cost": 4,
+    "traits": ["Syndicate", "Bodyguard"]
+  },
+  "Shaco": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/shaco/hud/jester_square.png",
+    "cost": 3,
+    "traits": ["Syndicate", "Assassin"]
+  },
+  "Akali": {
+    "img": "https://raw.communitydragon.org/pbe/game/assets/characters/akali/hud/akali_square.png",
+    "cost": 5,
+    "traits": ["Syndicate", "Assassin"]
+  }
+}
