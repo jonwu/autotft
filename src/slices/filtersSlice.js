@@ -43,13 +43,31 @@ export const filtersSlice = createSlice({
       }
     },
     addExclude: (state, action) => {
+      if (state.exclude.includes(action.payload)) return
       state.include = state.include.filter((value) => value != action.payload)
       state.exclude = [...state.exclude, action.payload]
     },
     removeExclude: (state, action) => {
       state.exclude = state.exclude.filter((value) => value != action.payload)
     },
+    toggleExclude: (state, action) => {
+      if (state.exclude.includes(action.payload)) {
+        state.exclude = state.exclude.filter((value) => value != action.payload)
+      } else {
+        state.include = state.include.filter((value) => value != action.payload)
+        state.exclude = [...state.exclude, action.payload]
+      }
+    },
+    toggleInclude: (state, action) => {
+      if (state.include.includes(action.payload)) {
+        state.include = state.include.filter((value) => value != action.payload)
+      } else {
+        state.exclude = state.exclude.filter((value) => value != action.payload)
+        state.include = [...state.include, action.payload]
+      }
+    },
     addInclude: (state, action) => {
+      if (state.include.includes(action.payload)) return
       state.exclude = state.exclude.filter((value) => value != action.payload)
       state.include = [...state.include, action.payload]
     },
@@ -64,7 +82,9 @@ export const {
   addExclude,
   removeExclude,
   addInclude,
-  removeInclude
+  removeInclude,
+  toggleInclude,
+  toggleExclude
 } = filtersSlice.actions
 
 export default filtersSlice.reducer

@@ -1,12 +1,11 @@
 import React from 'react'
 import View from 'uikit/View'
-import lodash from 'lodash'
+import ListView from 'uikit/ListView'
 import { useThemeKit } from 'hooks/useThemeKit'
 import TouchableOpacity from 'uikit/TouchableOpacity'
 import { toggleTheme } from 'slices/themeSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import Container from 'uikit/Container'
-import ListView from 'uikit/ListView'
+
 import './App.css'
 
 import Levels from 'components/Levels'
@@ -18,9 +17,9 @@ import {
   addInclude,
   removeInclude
 } from 'slices/filtersSlice'
-import champions from 'constants/champions.json'
-import synergies from 'constants/synergies.json'
+
 import { fetchChampionAsync } from 'slices/championsSlice'
+import Cell from 'components/Cell'
 
 const App = () => {
   const { theme, gstyles } = useThemeKit()
@@ -167,188 +166,24 @@ const Filters = () => {
           text={'update'}
           small
         />
-        {/* <FilterOption
-          text={'+ Augment'}
-          toggledText={toggledText}
-          setToggleText={setToggleText}
-        />
-        <FilterOption
-          text={'Synergy Cap: No Limit'}
-          toggledText={toggledText}
-          setToggleText={setToggleText}
-        /> */}
       </View>
     </>
   )
 }
 const Results = () => {
   const champions = useSelector((state) => state.champions.data)
-
-  if (champions == null) return null
-  // console.log(champions)
-  return (
-    <ListView data={champions} renderItem={(item) => <Cell item={item} />} />
-  )
-}
-
-const traitsMap = {
-  academy: {
-    name: 'Academy',
-    img: 'https://lolchess.gg/images/tft/traiticons-white/6.0/Academy.svg'
-  },
-  bodyguard: {
-    name: 'Bodyguard',
-    img: 'https://lolchess.gg/images/tft/traiticons-white/6.0/Bodyguard.svg'
-  },
-  brusier: {
-    name: 'Brusier',
-    img: 'https://lolchess.gg/images/tft/traiticons-white/6.0/Bruiser.svg'
-  },
-  protector: {
-    name: 'Protector',
-    img: 'https://lolchess.gg/images/tft/traiticons-white/6.0/Protector.svg'
-  },
-  scrap: {
-    name: 'Scrap',
-    img: 'https://lolchess.gg/images/tft/traiticons-white/6.0/Scrap.svg'
-  }
-}
-const map = {
-  katarina: {
-    name: 'Katarina',
-    img: '//cdn.lolchess.gg/upload/images/champions/Katarina_1634785266.png'
-  },
-  darius: {
-    name: 'Darius',
-    img: '//cdn.lolchess.gg/upload/images/champions/Darius_1634784329.png'
-  },
-  blitzcrank: {
-    name: 'Blitzcrank',
-    img: '//ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/Blitzcrank.png'
-  },
-  garen: {
-    name: 'Garen',
-    img: '//cdn.lolchess.gg/upload/images/champions/Garen_1634784140.png'
-  },
-  ekko: {
-    name: 'Ekko',
-    img: '//ddragon.leagueoflegends.com/cdn/11.19.1/img/champion/Ekko.png'
-  }
-}
-
-const Cell = ({ item }) => {
   const { theme, gstyles } = useThemeKit()
 
-  const reducedTraits = item.reduce((data, value) => {
-    const { traits } = champions[value]
-    if (traits == null) return data
-
-    traits.forEach((trait) => {
-      if (data[trait]) {
-        data[trait] += 1
-      } else {
-        data[trait] = 1
-      }
-    })
-
-    return data
-  }, {})
-
-  const sortedTraits = Object.entries(reducedTraits)
-    .filter(([key, value]) => value >= synergies[key])
-    .sort(function (a, b) {
-      return b[1] - a[1]
-    })
-
-  const chunksTrait = lodash.chunk(sortedTraits, 5)
+  if (champions == null) return null
   return (
-    <View style={{ padding: theme.spacing_2 }} row>
-      <ListView
-        data={item}
-        horizontal
-        renderSeparatorComponent={() => {
-          return <div style={{ width: theme.spacing_3 }} />
-        }}
-        renderItem={(key) => {
-          // const champ = map[key]
-          return (
-            <View
-              style={{
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 50
-              }}
-            >
-              <img
-                src={champions[key].img}
-                style={{ width: 40, height: 40, borderRadius: 40 }}
-              />
-              <div
-                style={{
-                  ...gstyles.footnote,
-                  color: theme.text(),
-                  overflow: 'hidden',
-                  whiteSpace: 'nowrap'
-                }}
-              >
-                {key}
-              </div>
-            </View>
-          )
-        }}
-      />
-      <div style={{ flex: 1 }} />
-      <ListView
-        data={chunksTrait}
-        style={{ alignItems: 'flex-end' }}
-        renderItem={(item, x) => {
-          return (
-            <ListView
-              data={item}
-              horizontal
-              renderSeparatorComponent={() => {
-                return <div style={{ width: theme.spacing_2 }} />
-              }}
-              renderItem={(data, i) => {
-                const [trait, count] = data
-                let testStyle = gstyles.caption
-                let textColor = theme.text()
-                if (x === 0 && i <= 1) {
-                  testStyle = gstyles.p1_semibold
-                }
-                if (x > 0) {
-                  textColor = theme.text(0.5)
-                  testStyle = gstyles.footnote
-                }
-
-                return (
-                  <View
-                    style={{
-                      // height: 100,
-                      // width: 64,
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    {/* <img style={{ width: 25, height: 25 }} /> */}
-                    <div
-                      style={{
-                        ...testStyle,
-                        color: textColor,
-                        overflow: 'hidden',
-                        whiteSpace: 'nowrap'
-                      }}
-                    >
-                      {count} {trait}
-                    </div>
-                  </View>
-                )
-              }}
-            />
-          )
-        }}
-      />
-    </View>
+    <ListView
+      data={champions}
+      renderItem={(item) => <Cell item={item} />}
+      renderSeparatorComponent={() => (
+        <div style={{ height: 1, backgroundColor: theme.text(0.05) }} />
+      )}
+    />
   )
 }
+
 export default App
