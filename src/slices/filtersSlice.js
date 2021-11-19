@@ -12,7 +12,8 @@ const getCostUnits = (cost) => {
 const initialState = {
   level: 5, // 3-9
   exclude: [...getCostUnits(5), ...getCostUnits(4)],
-  include: []
+  include: [],
+  isFavorite: false
 }
 
 export const filtersSlice = createSlice({
@@ -28,19 +29,30 @@ export const filtersSlice = createSlice({
             ...getCostUnits(5),
             ...getCostUnits(4),
             ...getCostUnits(3)
-          ]
+          ].filter((v) => !state.include.includes(v))
           break
         case 5:
         case 6:
-          state.exclude = [...getCostUnits(5), ...getCostUnits(4)]
+          state.exclude = [...getCostUnits(5), ...getCostUnits(4)].filter(
+            (v) => !state.include.includes(v)
+          )
           break
         case 7:
-          state.exclude = [...getCostUnits(1)]
+          state.exclude = [...getCostUnits(1)].filter(
+            (v) => !state.include.includes(v)
+          )
+
           break
         case 8:
-          state.exclude = [...getCostUnits(1), ...getCostUnits(2)]
+          state.exclude = [...getCostUnits(1), ...getCostUnits(2)].filter(
+            (v) => !state.include.includes(v)
+          )
+
           break
       }
+    },
+    toggleIsFavorite: (state) => {
+      state.isFavorite = !state.isFavorite
     },
     addExclude: (state, action) => {
       if (state.exclude.includes(action.payload)) return
@@ -84,7 +96,8 @@ export const {
   addInclude,
   removeInclude,
   toggleInclude,
-  toggleExclude
+  toggleExclude,
+  toggleIsFavorite
 } = filtersSlice.actions
 
 export default filtersSlice.reducer

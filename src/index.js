@@ -2,17 +2,20 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
-import { store } from './slices/_store'
+import { store, persistor } from './slices/_store'
 import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 import ThemeProvider from 'uikit/ThemeProvider'
+import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

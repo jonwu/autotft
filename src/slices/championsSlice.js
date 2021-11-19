@@ -16,7 +16,8 @@ export const fetchChampionAsync = createAsyncThunk(
   'champions/fetch',
   async (page = 1, { getState }) => {
     const state = getState()
-    const filters = { ...state.filters, page }
+    const { include, exclude, level } = state.filters
+    const filters = { include, exclude, level, page }
     return await fetchChampion(filters)
   }
 )

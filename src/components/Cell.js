@@ -15,6 +15,8 @@ import {
 } from 'slices/filtersSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { MdOutlineFavoriteBorder, MdOutlineFavorite } from 'react-icons/md'
+import { toggleFavorite, useHasFavorite } from 'slices/favoritesSlice'
 const Menu = ({ id, item }) => {
   const { theme, gstyles } = useThemeKit()
   return (
@@ -129,6 +131,27 @@ const ChampionItem = ({ item }) => {
     </View>
   )
 }
+
+const Favorites = ({ item }) => {
+  const { theme, gstyles } = useThemeKit()
+  const hasFavorite = useHasFavorite(item)
+
+  const dispatch = useDispatch()
+  return (
+    <TouchableOpacity
+      onClick={() => {
+        dispatch(toggleFavorite(item))
+      }}
+      style={{ paddingLeft: theme.spacing_2, paddingTop: theme.spacing_5 }}
+    >
+      {hasFavorite ? (
+        <MdOutlineFavorite size={24} color={theme.red()} />
+      ) : (
+        <MdOutlineFavoriteBorder size={24} color={theme.text(0.1)} />
+      )}
+    </TouchableOpacity>
+  )
+}
 const Cell = ({ item }) => {
   const { theme, gstyles } = useThemeKit()
 
@@ -216,6 +239,7 @@ const Cell = ({ item }) => {
           )
         }}
       />
+      <Favorites item={item} />
     </View>
   )
 }

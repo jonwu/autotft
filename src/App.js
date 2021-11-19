@@ -15,11 +15,13 @@ import {
   addExclude,
   removeExclude,
   addInclude,
-  removeInclude
+  removeInclude,
+  toggleIsFavorite
 } from 'slices/filtersSlice'
 
 import { fetchChampionAsync } from 'slices/championsSlice'
 import Cell from 'components/Cell'
+import { useFavoriteCount } from 'slices/favoritesSlice'
 
 const App = () => {
   const { theme, gstyles } = useThemeKit()
@@ -53,6 +55,66 @@ const App = () => {
   )
 }
 
+const Favorite = ({ setToggleText }) => {
+  const { theme, gstyles } = useThemeKit()
+  const count = useFavoriteCount()
+  const dispatch = useDispatch()
+  const countText = count === 0 ? '' : ` (${count})`
+  return (
+    <View style={{ zIndex: 1 }}>
+      <TouchableOpacity
+        onClick={() => {
+          setToggleText(null)
+          dispatch(toggleIsFavorite())
+        }}
+      >
+        <View
+          style={{
+            ...gstyles.card,
+            backgroundColor: theme.bg2(),
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: theme.spacing_4,
+            marginRight: theme.spacing_2
+          }}
+        >
+          <div style={{ ...gstyles.p1, color: theme.text() }}>
+            Favorites{countText}
+          </div>
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
+
+const Back = () => {
+  const { theme, gstyles } = useThemeKit()
+  const dispatch = useDispatch()
+  return (
+    <View style={{ zIndex: 1 }}>
+      <TouchableOpacity
+        onClick={() => {
+          dispatch(toggleIsFavorite())
+        }}
+      >
+        <View
+          style={{
+            ...gstyles.card,
+            backgroundColor: theme.bg2(),
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: theme.spacing_4,
+            marginRight: theme.spacing_2
+          }}
+        >
+          <div style={{ ...gstyles.p1, color: theme.text() }}>
+            Return to Discovery
+          </div>
+        </View>
+      </TouchableOpacity>
+    </View>
+  )
+}
 const FilterOption = ({ text, toggledText, setToggleText, content, id }) => {
   const { theme, gstyles } = useThemeKit()
   const toggled = toggledText === id
@@ -99,9 +161,22 @@ const Filters = () => {
   const exclude = useSelector((state) => state.filters.exclude)
   const level = useSelector((state) => state.filters.level)
   const status = useSelector((state) => state.champions.status)
+  const isFavorite = useSelector((state) => state.filters.isFavorite)
 
   const includeStr = include.length === 0 ? '' : ` (${include.length})`
   const excludeStr = exclude.length === 0 ? '' : ` (${exclude.length})`
+  if (isFavorite)
+    return (
+      <View
+        row
+        style={{
+          paddingTop: theme.spacing_4,
+          paddingBottom: theme.spacing_4
+        }}
+      >
+        <Back />
+      </View>
+    )
   return (
     <>
       {toggledText != null && (
@@ -156,6 +231,7 @@ const Filters = () => {
             />
           }
         />
+        <Favorite setToggleText={setToggleText} />
         <View style={{ flex: 1 }} />
         <Button
           disabled={status === 'loading'}
@@ -172,8 +248,22 @@ const Filters = () => {
 }
 const Results = () => {
   const champions = useSelector((state) => state.champions.data)
+  const isFavorite = useSelector((state) => state.filters.isFavorite)
+  const favorites = useSelector((state) => state.favorites.data)
+
   const { theme, gstyles } = useThemeKit()
 
+  if (isFavorite) {
+    return (
+      <ListView
+        data={favorites}
+        renderItem={(item) => <Cell item={item} />}
+        renderSeparatorComponent={() => (
+          <div style={{ height: 1, backgroundColor: theme.text(0.05) }} />
+        )}
+      />
+    )
+  }
   if (champions == null) return null
   return (
     <ListView
