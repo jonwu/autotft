@@ -3,7 +3,7 @@ import champions from 'constants/champions.json'
 
 const champs = Object.entries(champions)
 
-const getCostUnits = (cost) => {
+export const getCostUnits = (cost) => {
   return champs
     .filter(([key, data]) => data.cost === cost)
     .map(([key, data]) => key)
@@ -16,6 +16,8 @@ const initialState = {
   isFavorite: false
 }
 
+const checkAll = (arr, target) => target.every((v) => arr.includes(v))
+
 export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
@@ -25,34 +27,43 @@ export const filtersSlice = createSlice({
 
       switch (action.payload) {
         case 4:
-          state.exclude = [
-            ...getCostUnits(5),
-            ...getCostUnits(4),
-            ...getCostUnits(3)
-          ].filter((v) => !state.include.includes(v))
-          break
-        case 5:
-        case 6:
           state.exclude = [...getCostUnits(5), ...getCostUnits(4)].filter(
             (v) => !state.include.includes(v)
           )
           break
-        case 7:
-          state.exclude = [...getCostUnits(1)].filter(
+        case 5:
+          state.exclude = [...getCostUnits(5), ...getCostUnits(4)].filter(
             (v) => !state.include.includes(v)
           )
-
           break
+        case 6:
+        case 7:
         case 8:
-          state.exclude = [...getCostUnits(1), ...getCostUnits(2)].filter(
-            (v) => !state.include.includes(v)
-          )
-
+          state.exclude = []
           break
       }
     },
     toggleIsFavorite: (state) => {
       state.isFavorite = !state.isFavorite
+    },
+    clearExclude: (state) => {
+      state.exclude = []
+    },
+    clearInclude: (state) => {
+      state.include = []
+    },
+    addManyExclude: (state, action) => {
+      if (checkAll(state.exclude, action.payload)) {
+        action.payload.forEach((payload) => {
+          state.exclude = state.exclude.filter((value) => value != payload)
+        })
+      } else {
+        action.payload.forEach((payload) => {
+          if (state.exclude.includes(payload)) return
+          state.include = state.include.filter((value) => value != payload)
+          state.exclude = [...state.exclude, payload]
+        })
+      }
     },
     addExclude: (state, action) => {
       if (state.exclude.includes(action.payload)) return
@@ -97,7 +108,10 @@ export const {
   removeInclude,
   toggleInclude,
   toggleExclude,
-  toggleIsFavorite
+  toggleIsFavorite,
+  addManyExclude,
+  clearExclude,
+  clearInclude
 } = filtersSlice.actions
 
 export default filtersSlice.reducer

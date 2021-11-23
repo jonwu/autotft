@@ -225,6 +225,7 @@ const Filters = () => {
           setToggleText={setToggleText}
           content={
             <Include
+              isExclude
               selected={exclude}
               add={addExclude}
               remove={removeExclude}
@@ -249,8 +250,11 @@ const Filters = () => {
 const Results = () => {
   const champions = useSelector((state) => state.champions.data)
   const isFavorite = useSelector((state) => state.filters.isFavorite)
-  const favorites = useSelector((state) => state.favorites.data)
+  const favorites = useSelector((state) =>
+    state.favorites.data.slice().reverse()
+  )
 
+  console.log(favorites)
   const { theme, gstyles } = useThemeKit()
 
   if (isFavorite) {

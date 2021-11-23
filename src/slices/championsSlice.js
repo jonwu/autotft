@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const fetchChampion = async (body) => {
-  const response = await fetch('https://d459-71-232-162-30.ngrok.io/comp', {
+  const response = await fetch('https://370d-71-232-162-30.ngrok.io//comp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

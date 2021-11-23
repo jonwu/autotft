@@ -6,6 +6,7 @@ import champions from 'constants/champions.json'
 import ListView from 'uikit/ListView'
 import TouchableOpacity from 'uikit/TouchableOpacity'
 import { useDispatch } from 'react-redux'
+import { addManyExclude, clearExclude, getCostUnits } from 'slices/filtersSlice'
 
 const Item = ({ item, add, remove, selected }) => {
   const { theme, gstyles } = useThemeKit()
@@ -69,6 +70,59 @@ const Item = ({ item, add, remove, selected }) => {
     </TouchableOpacity>
   )
 }
+
+const HeaderItem = ({ text, onClick }) => {
+  const { theme, gstyles } = useThemeKit()
+  return (
+    <TouchableOpacity
+      onClick={onClick}
+      style={{
+        margin: theme.spacing_3
+      }}
+    >
+      <View>
+        <div
+          style={{
+            ...gstyles.p1_semibold,
+            color: theme.red(),
+            textDecoration: 'underline'
+          }}
+        >
+          {text}
+        </div>
+      </View>
+    </TouchableOpacity>
+  )
+}
+const Header = () => {
+  const { theme, gstyles } = useThemeKit()
+  const dispatch = useDispatch()
+  return (
+    <View row style={{ alignSelf: 'flex-end' }}>
+      <HeaderItem
+        text={'1 Cost'}
+        onClick={() => dispatch(addManyExclude(getCostUnits(1)))}
+      />
+      <HeaderItem
+        text={'2 Cost'}
+        onClick={() => dispatch(addManyExclude(getCostUnits(2)))}
+      />
+      <HeaderItem
+        text={'3 Cost'}
+        onClick={() => dispatch(addManyExclude(getCostUnits(3)))}
+      />
+      <HeaderItem
+        text={'4 Cost'}
+        onClick={() => dispatch(addManyExclude(getCostUnits(4)))}
+      />
+      <HeaderItem
+        text={'5 Cost'}
+        onClick={() => dispatch(addManyExclude(getCostUnits(5)))}
+      />
+      <HeaderItem text={'Clear All'} onClick={() => dispatch(clearExclude())} />
+    </View>
+  )
+}
 const Row = ({ item, add, remove, selected }) => {
   const { theme, gstyles } = useThemeKit()
 
@@ -82,7 +136,7 @@ const Row = ({ item, add, remove, selected }) => {
     />
   )
 }
-const Include = ({ add, remove, selected }) => {
+const Include = ({ add, remove, selected, isExclude }) => {
   const data = Object.entries(champions)
     .sort()
     .sort((a, b) => a[1].cost - b[1].cost)
@@ -93,6 +147,10 @@ const Include = ({ add, remove, selected }) => {
   return (
     <ListView
       data={chunks}
+      renderHeaderComponent={() => {
+        if (!isExclude) return null
+        return <Header />
+      }}
       renderItem={(item) => (
         <Row item={item} add={add} remove={remove} selected={selected} />
       )}
