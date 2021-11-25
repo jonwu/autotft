@@ -51,7 +51,7 @@ const Item = ({ item, add, remove, selected }) => {
           height: 64,
           padding: theme.spacing_4,
           paddingTop: theme.spacing_2,
-          backgroundColor: isSelected ? theme.red(0.75) : undefined
+          backgroundColor: isSelected ? theme.red() : undefined
         }}
       >
         <img
@@ -65,7 +65,14 @@ const Item = ({ item, add, remove, selected }) => {
             borderColor: color
           }}
         />
-        <div style={{ ...gstyles.footnote, color: theme.text() }}>{name}</div>
+        <div
+          style={{
+            ...gstyles.footnote,
+            color: isSelected ? theme.light() : theme.text()
+          }}
+        >
+          {name}
+        </div>
       </View>
     </TouchableOpacity>
   )

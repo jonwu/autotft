@@ -25,13 +25,16 @@ const LevelItem = ({ value }) => {
           paddingTop: theme.spacing_4,
           paddingBottom: theme.spacing_4,
           paddingLeft: theme.spacing_2,
-          backgroundColor: isSelected ? theme.red(0.75) : undefined,
+          backgroundColor: isSelected ? theme.red() : undefined,
           // alignItems: 'center'
           justifyContent: 'center'
         }}
       >
         <div
-          style={{ ...gstyles.p1, color: theme.text() }}
+          style={{
+            ...gstyles.p1,
+            color: isSelected ? theme.light() : theme.text()
+          }}
         >{`Level ${value}`}</div>
       </View>
     </TouchableOpacity>

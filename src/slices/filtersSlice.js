@@ -13,6 +13,8 @@ const initialState = {
   level: 5, // 3-9
   exclude: [...getCostUnits(5), ...getCostUnits(4)],
   include: [],
+  includeTraits: [],
+  excludeTraits: [],
   isFavorite: false
 }
 
@@ -96,6 +98,31 @@ export const filtersSlice = createSlice({
     },
     removeInclude: (state, action) => {
       state.include = state.include.filter((value) => value != action.payload)
+    },
+    addExcludeTrait: (state, action) => {
+      if (state.excludeTraits.includes(action.payload)) return
+      state.includeTraits = state.includeTraits.filter(
+        (value) => value != action.payload
+      )
+      state.excludeTraits = [...state.excludeTraits, action.payload]
+    },
+    removeExcludeTrait: (state, action) => {
+      state.excludeTraits = state.excludeTraits.filter(
+        (value) => value != action.payload
+      )
+    },
+
+    addIncludeTrait: (state, action) => {
+      if (state.includeTraits.includes(action.payload)) return
+      state.excludeTraits = state.excludeTraits.filter(
+        (value) => value != action.payload
+      )
+      state.includeTraits = [...state.includeTraits, action.payload]
+    },
+    removeIncludeTrait: (state, action) => {
+      state.includeTraits = state.includeTraits.filter(
+        (value) => value != action.payload
+      )
     }
   }
 })
@@ -111,7 +138,11 @@ export const {
   toggleIsFavorite,
   addManyExclude,
   clearExclude,
-  clearInclude
+  clearInclude,
+  addExcludeTrait,
+  removeExcludeTrait,
+  addIncludeTrait,
+  removeIncludeTrait
 } = filtersSlice.actions
 
 export default filtersSlice.reducer

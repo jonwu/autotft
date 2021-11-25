@@ -190,15 +190,16 @@ export default (theme) => {
       minWidth: theme.borderWidth
     },
     border: {
-      borderRadius: theme.borderRadius,
-      borderWidth: theme.borderWidth,
+      // borderRadius: theme.borderRadius,
+      borderColor: theme.text(0.15),
+      borderWidth: 1,
       borderStyle: 'solid'
     },
     shadow: {
       boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
     },
     card: {
-      borderRadius: 4,
+      // borderRadius: 4,
       boxSizing: 'border-box',
       padding: theme.spacing_2,
       backgroundColor: theme.card(),

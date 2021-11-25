@@ -54,6 +54,7 @@ const Themes = {
     indicatorColor: Colors.RED(),
     tabActiveColor: Colors.RED(),
     tabInactiveColor: Colors.DARK(),
+    primary: Colors.RED(),
     fab: Colors.RED(),
     ...shared
   },
@@ -75,6 +76,7 @@ const Themes = {
     indicatorColor: Colors.RED(),
     tabActiveColor: Colors.RED(),
     tabInactiveColor: Colors.LIGHT(),
+    primary: Colors.RED(),
     fab: Colors.RED(),
     ...shared
   }

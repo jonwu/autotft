@@ -50,7 +50,10 @@ const ChampionItemOption = ({ text, onClick }) => {
 }
 const ChampionItem = ({ item }) => {
   const { theme, gstyles } = useThemeKit()
-  if (champions[item] == null) return
+  if (champions[item] == null) {
+    console.log(item)
+    return null
+  }
   const [isHover, setIsHover] = React.useState(false)
   const dispatch = useDispatch()
   const hasInclude = useSelector((state) =>

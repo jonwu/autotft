@@ -16,12 +16,17 @@ import {
   removeExclude,
   addInclude,
   removeInclude,
-  toggleIsFavorite
+  toggleIsFavorite,
+  addExcludeTrait,
+  removeExcludeTrait,
+  addIncludeTrait,
+  removeIncludeTrait
 } from 'slices/filtersSlice'
 
 import { fetchChampionAsync } from 'slices/championsSlice'
 import Cell from 'components/Cell'
 import { useFavoriteCount } from 'slices/favoritesSlice'
+import Traits from 'components/Traits'
 
 const App = () => {
   const { theme, gstyles } = useThemeKit()
@@ -39,7 +44,9 @@ const App = () => {
       style={{
         backgroundColor: theme.bg(),
         height: '100vh',
+        width: '100vw',
         alignItems: 'center',
+        minWidth: 1080,
         paddingTop: 100
       }}
     >
@@ -47,7 +54,12 @@ const App = () => {
         <Filters />
       </View>
       <View
-        style={{ width: 1080, backgroundColor: theme.bg2(), borderRadius: 4 }}
+        style={{
+          width: 1080,
+          backgroundColor: theme.bg2(),
+          ...gstyles.border
+          // borderRadius: 4
+        }}
       >
         <Results />
       </View>
@@ -103,8 +115,8 @@ const Back = () => {
             backgroundColor: theme.bg2(),
             alignItems: 'center',
             justifyContent: 'center',
-            padding: theme.spacing_4,
-            marginRight: theme.spacing_2
+            padding: theme.spacing_4
+            // marginRight: theme.spacing_2
           }}
         >
           <div style={{ ...gstyles.p1, color: theme.text() }}>
@@ -142,7 +154,8 @@ const FilterOption = ({ text, toggledText, setToggleText, content, id }) => {
                 ...gstyles.card,
                 padding: 0,
                 position: 'absolute',
-                top: theme.spacing_4
+                top: theme.spacing_4,
+                overflow: 'hidden'
               }}
             >
               {content}
@@ -159,12 +172,18 @@ const Filters = () => {
   const dispatch = useDispatch()
   const include = useSelector((state) => state.filters.include)
   const exclude = useSelector((state) => state.filters.exclude)
+  const includeTraits = useSelector((state) => state.filters.includeTraits)
+  const excludeTraits = useSelector((state) => state.filters.excludeTraits)
   const level = useSelector((state) => state.filters.level)
   const status = useSelector((state) => state.champions.status)
   const isFavorite = useSelector((state) => state.filters.isFavorite)
 
   const includeStr = include.length === 0 ? '' : ` (${include.length})`
   const excludeStr = exclude.length === 0 ? '' : ` (${exclude.length})`
+  const includeTraitsStr =
+    includeTraits.length === 0 ? '' : ` (${includeTraits.length})`
+  const excludeTraitsStr =
+    excludeTraits.length === 0 ? '' : ` (${excludeTraits.length})`
   if (isFavorite)
     return (
       <View
@@ -174,6 +193,7 @@ const Filters = () => {
           paddingBottom: theme.spacing_4
         }}
       >
+        <View style={{ flex: 1 }} />
         <Back />
       </View>
     )
@@ -207,7 +227,7 @@ const Filters = () => {
         />
         <FilterOption
           id={'include'}
-          text={`Choose Carry Champions${includeStr}`}
+          text={`Include Champions${includeStr}`}
           toggledText={toggledText}
           setToggleText={setToggleText}
           content={
@@ -232,14 +252,40 @@ const Filters = () => {
             />
           }
         />
-        <Favorite setToggleText={setToggleText} />
+        <FilterOption
+          id={'includeTrait'}
+          text={`Include Traits${includeTraitsStr}`}
+          toggledText={toggledText}
+          setToggleText={setToggleText}
+          content={
+            <Traits
+              selected={includeTraits}
+              add={addIncludeTrait}
+              remove={removeIncludeTrait}
+            />
+          }
+        />
+        <FilterOption
+          id={'excludeTrait'}
+          text={`Exclude Traits${excludeTraitsStr}`}
+          toggledText={toggledText}
+          setToggleText={setToggleText}
+          content={
+            <Traits
+              selected={excludeTraits}
+              add={addExcludeTrait}
+              remove={removeExcludeTrait}
+            />
+          }
+        />
         <View style={{ flex: 1 }} />
+        <Favorite setToggleText={setToggleText} />
         <Button
           disabled={status === 'loading'}
           onClick={() => {
             dispatch(fetchChampionAsync())
           }}
-          style={{ backgroundColor: theme.red(), borderRadius: 4 }}
+          style={{ backgroundColor: theme.red() }}
           text={'update'}
           small
         />
@@ -254,7 +300,6 @@ const Results = () => {
     state.favorites.data.slice().reverse()
   )
 
-  console.log(favorites)
   const { theme, gstyles } = useThemeKit()
 
   if (isFavorite) {
