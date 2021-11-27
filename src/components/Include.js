@@ -61,7 +61,8 @@ const Item = ({ item, add, remove, selected }) => {
             width: 50,
             backgroundColor: theme.bg2(),
             ...gstyles.border,
-            borderWidth: 1,
+            borderWidth: 2,
+            borderRadius: 4,
             borderColor: color
           }}
         />
@@ -90,7 +91,7 @@ const HeaderItem = ({ text, onClick }) => {
       <View>
         <div
           style={{
-            ...gstyles.p1_semibold,
+            ...gstyles.p1,
             color: theme.red(),
             textDecoration: 'underline'
           }}

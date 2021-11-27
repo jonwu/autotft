@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const fetchChampion = async (body) => {
-  const response = await fetch('https://370d-71-232-162-30.ngrok.io/comp', {
+  const response = await fetch('https://1143-71-232-162-30.ngrok.io/comp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,8 +16,14 @@ export const fetchChampionAsync = createAsyncThunk(
   'champions/fetch',
   async (page = 1, { getState }) => {
     const state = getState()
-    const { include, exclude, level } = state.filters
-    const filters = { include, exclude, level, page }
+    const { include, exclude, level, includeTraits, excludeTraits } =
+      state.filters
+    const filters = {
+      include: { ...include, ...includeTraits },
+      exclude: { ...exclude, ...excludeTraits },
+      level,
+      page
+    }
     return await fetchChampion(filters)
   }
 )
