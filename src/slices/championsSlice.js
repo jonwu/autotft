@@ -19,8 +19,8 @@ export const fetchChampionAsync = createAsyncThunk(
     const { include, exclude, level, includeTraits, excludeTraits } =
       state.filters
     const filters = {
-      include: { ...include, ...includeTraits },
-      exclude: { ...exclude, ...excludeTraits },
+      include: [...include, ...includeTraits],
+      exclude: [...exclude, ...excludeTraits],
       level,
       page
     }
