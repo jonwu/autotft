@@ -106,7 +106,7 @@
   },
   "Tahm Kench": {
     "img": "https://raw.communitydragon.org/pbe/game/assets/characters/tahmkench/hud/tahmkench_square.png",
-    "cost": 4,
+    "cost": 5,
     "traits": ["Mercenary", "Bruiser", "Glutton"]
   },
   "Seraphine": {
