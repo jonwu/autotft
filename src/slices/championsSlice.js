@@ -2,15 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 const https = require('https');
 
 const fetchChampion = async (body) => {
-<<<<<<< HEAD
   const httpsAgent = new https.Agent({
     rejectUnauthorized: false,
   });
 
   const response = await fetch('https://35.236.91.47:443/comp', {
-=======
-  const response = await fetch('https://1143-71-232-162-30.ngrok.io/comp', {
->>>>>>> 75e6e2c711c04e99c2389a9c9f8e0f7a4f7b068c
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
