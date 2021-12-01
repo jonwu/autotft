@@ -6,7 +6,7 @@ const fetchChampion = async (body) => {
     rejectUnauthorized: false,
   });
 
-  const response = await fetch('https://35.236.91.47:443/comp', {
+  const response = await fetch('https://34.68.47.32:443/comp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
