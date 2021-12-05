@@ -1,16 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-const https = require('https');
 
 const fetchChampion = async (body) => {
-  const httpsAgent = new https.Agent({
-    rejectUnauthorized: false,
-  });
-
-  const response = await fetch('https://34.68.47.32:443/comp', {
+  const response = await fetch('http://localhost:5000/comp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      agent: httpsAgent
     },
     body: JSON.stringify(body)
   })
