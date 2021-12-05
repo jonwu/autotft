@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const fetchChampion = async (body) => {
-  const response = await fetch('/comp', {
+  const response = await fetch('http://34.68.47.32:5000/comp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
