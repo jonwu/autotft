@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const fetchChampion = async (body) => {
-  const response = await fetch('/comp', {
+  const response = await fetch('https://tftcraft.com/comp', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
