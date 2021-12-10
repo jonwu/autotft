@@ -1,10 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const fetchChampion = async (body) => {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 30000)
   const response = await fetch('https://tftcraft.com/comp', {
+    signal: controller.signal,
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify(body)
   })

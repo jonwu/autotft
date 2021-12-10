@@ -17,7 +17,11 @@ const Button = ({
   const { theme, gstyles } = useThemeKit()
   const ogTextStyle = small ? gstyles.p1_bold : gstyles.p1_bold
   return (
-    <TouchableOpacity disabled={disabled} onClick={onClick} to={to}>
+    <TouchableOpacity
+      disabled={disabled}
+      onClick={disabled ? undefined : onClick}
+      to={to}
+    >
       <View
         row
         style={{

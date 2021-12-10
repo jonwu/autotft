@@ -12,7 +12,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['favorites', 'filters']
+  whitelist: ['favorites']
 }
 
 const reducer = combineReducers({

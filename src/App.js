@@ -47,7 +47,7 @@ const App = () => {
         width: '100vw',
         alignItems: 'center',
         minWidth: 1080,
-        paddingTop: 100
+        paddingTop: theme.spacing_1 * 2
       }}
     >
       <View style={{ width: 1080, backgroundColor: theme.bg() }}>
@@ -166,6 +166,41 @@ const FilterOption = ({ text, toggledText, setToggleText, content, id }) => {
     </View>
   )
 }
+const Update = () => {
+  const { theme, gstyles } = useThemeKit()
+  const status = useSelector((state) => state.champions.status)
+  const dispatch = useDispatch()
+  const [seconds, setSeconds] = React.useState(30)
+
+  React.useEffect(() => {
+    let timeoutRef = null
+    if (status === 'loading') {
+      if (seconds > 0) {
+        timeoutRef = setTimeout(() => setSeconds(seconds - 1), 1000)
+      }
+    }
+    return () => {
+      if (status != 'loading') {
+        clearTimeout(timeoutRef)
+        setSeconds(30)
+      }
+    }
+  }, [status, seconds])
+
+  const content = status === 'loading' ? `Loading... ${seconds}s` : 'update'
+
+  return (
+    <Button
+      disabled={status === 'loading'}
+      onClick={() => {
+        dispatch(fetchChampionAsync())
+      }}
+      style={{ backgroundColor: theme.red(), width: 120 }}
+      text={content}
+      small
+    />
+  )
+}
 const Filters = () => {
   const { theme, gstyles } = useThemeKit()
   const [toggledText, setToggleText] = React.useState(null)
@@ -175,7 +210,7 @@ const Filters = () => {
   const includeTraits = useSelector((state) => state.filters.includeTraits)
   const excludeTraits = useSelector((state) => state.filters.excludeTraits)
   const level = useSelector((state) => state.filters.level)
-  const status = useSelector((state) => state.champions.status)
+
   const isFavorite = useSelector((state) => state.filters.isFavorite)
 
   const includeStr = include.length === 0 ? '' : ` (${include.length})`
@@ -280,15 +315,7 @@ const Filters = () => {
         />
         <View style={{ flex: 1 }} />
         <Favorite setToggleText={setToggleText} />
-        <Button
-          disabled={status === 'loading'}
-          onClick={() => {
-            dispatch(fetchChampionAsync())
-          }}
-          style={{ backgroundColor: theme.red() }}
-          text={'update'}
-          small
-        />
+        <Update />
       </View>
     </>
   )

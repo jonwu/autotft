@@ -8,7 +8,7 @@ const TouchableOpacity = ({ children, disabled, style, to, ...props }) => {
     className: disabled ? undefined : styles.touchable,
     style: {
       cursor: disabled ? 'auto' : 'pointer',
-      opacity: disabled ? 0.1 : undefined,
+      opacity: disabled ? 0.3 : undefined,
       textDecoration: 'none',
       ...style
     },

@@ -10,8 +10,8 @@ export const getCostUnits = (cost) => {
 }
 
 const initialState = {
-  level: 5, // 3-9
-  exclude: [...getCostUnits(5), ...getCostUnits(4)],
+  level: 8, // 3-9
+  exclude: [],
   include: [],
   includeTraits: [],
   excludeTraits: [],
