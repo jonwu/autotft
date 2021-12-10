@@ -28,6 +28,7 @@ import Cell from 'components/Cell'
 import { useFavoriteCount } from 'slices/favoritesSlice'
 import Traits from 'components/Traits'
 
+import imgPenguin from 'images/penguin.png'
 const App = () => {
   const { theme, gstyles } = useThemeKit()
   const dispatch = useDispatch()
@@ -334,6 +335,26 @@ const Results = () => {
       <ListView
         data={favorites}
         renderItem={(item) => <Cell item={item} />}
+        renderEmptyComponent={() => (
+          <View
+            style={{
+              alignItems: 'center',
+              justifyContent: 'center',
+              paddingTop: 100
+            }}
+          >
+            <img src={imgPenguin} style={{ height: 500 }} />
+            <div
+              style={{
+                ...gstyles.p1_bold,
+                color: theme.text(),
+                margin: theme.spacing_1 * 3
+              }}
+            >
+              No Favorites. Click the hearts!
+            </div>
+          </View>
+        )}
         renderSeparatorComponent={() => (
           <div style={{ height: 1, backgroundColor: theme.text(0.05) }} />
         )}
@@ -345,6 +366,26 @@ const Results = () => {
     <ListView
       data={champions}
       renderItem={(item) => <Cell item={item} />}
+      renderEmptyComponent={() => (
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingTop: 100
+          }}
+        >
+          <img src={imgPenguin} style={{ height: 500 }} />
+          <div
+            style={{
+              ...gstyles.p1_bold,
+              color: theme.text(),
+              margin: theme.spacing_1 * 3
+            }}
+          >
+            No results. Try a different filter
+          </div>
+        </View>
+      )}
       renderSeparatorComponent={() => (
         <div style={{ height: 1, backgroundColor: theme.text(0.05) }} />
       )}

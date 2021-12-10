@@ -50,6 +50,7 @@ export const championsSlice = createSlice({
       })
       .addCase(fetchChampionAsync.rejected, (state) => {
         state.status = 'rejected'
+        state.data = []
       })
   }
 })
